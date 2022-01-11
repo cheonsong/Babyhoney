@@ -7,7 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532D8BA806B0D26443C56802 /* Pods_Babyhoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58F1FEDD631351BEC03DEFD /* Pods_Babyhoney.framework */; };
+		E84084B2278D43CC00D8BD1B /* ListVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84084B1278D43CC00D8BD1B /* ListVC+TableView.swift */; };
+		E84084B5278D448000D8BD1B /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84084B4278D448000D8BD1B /* Story.swift */; };
+		E84084B8278D457800D8BD1B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84084B7278D457800D8BD1B /* APIService.swift */; };
+		E84084BA278D4C6800D8BD1B /* SendVC+APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84084B9278D4C6800D8BD1B /* SendVC+APIService.swift */; };
 		E866FA68278C236800D8272E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA67278C236800D8272E /* Gradient.swift */; };
+		E866FA6B278CFFAD00D8272E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA6A278CFFAD00D8272E /* ViewController.swift */; };
+		E866FA6E278D1C1500D8272E /* SendVC+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA6D278D1C1500D8272E /* SendVC+TextView.swift */; };
+		E866FA70278D1C7000D8272E /* SendVC+keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA6F278D1C7000D8272E /* SendVC+keyboard.swift */; };
+		E866FA73278D1D0300D8272E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA72278D1D0300D8272E /* ListViewController.swift */; };
+		E866FA76278D3D0800D8272E /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA75278D3D0800D8272E /* ListCell.swift */; };
 		E8CF1820278C0EB80021D008 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8CF181A278C0EB70021D008 /* NotoSansKR-Bold.otf */; };
 		E8CF1821278C0EB80021D008 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8CF181B278C0EB70021D008 /* NotoSansKR-Regular.otf */; };
 		E8CF1822278C0EB80021D008 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8CF181C278C0EB70021D008 /* NotoSansKR-Thin.otf */; };
@@ -17,14 +27,26 @@
 		E8CF1828278C13750021D008 /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF1827278C13750021D008 /* LetterSpacing.swift */; };
 		E8CFF02C278BF27D0012D520 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFF02B278BF27D0012D520 /* AppDelegate.swift */; };
 		E8CFF02E278BF27D0012D520 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFF02D278BF27D0012D520 /* SceneDelegate.swift */; };
-		E8CFF030278BF27D0012D520 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFF02F278BF27D0012D520 /* ViewController.swift */; };
+		E8CFF030278BF27D0012D520 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFF02F278BF27D0012D520 /* SendViewController.swift */; };
 		E8CFF033278BF27D0012D520 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CFF031278BF27D0012D520 /* Main.storyboard */; };
 		E8CFF035278BF27E0012D520 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CFF034278BF27E0012D520 /* Assets.xcassets */; };
 		E8CFF038278BF27E0012D520 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CFF036278BF27E0012D520 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24F827F248C91EDE6B84F2DE /* Pods-Babyhoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babyhoney.release.xcconfig"; path = "Target Support Files/Pods-Babyhoney/Pods-Babyhoney.release.xcconfig"; sourceTree = "<group>"; };
+		4A1E10A1C156B0900708DE10 /* Pods-Babyhoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babyhoney.debug.xcconfig"; path = "Target Support Files/Pods-Babyhoney/Pods-Babyhoney.debug.xcconfig"; sourceTree = "<group>"; };
+		E58F1FEDD631351BEC03DEFD /* Pods_Babyhoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Babyhoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E84084B1278D43CC00D8BD1B /* ListVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListVC+TableView.swift"; sourceTree = "<group>"; };
+		E84084B4278D448000D8BD1B /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		E84084B7278D457800D8BD1B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		E84084B9278D4C6800D8BD1B /* SendVC+APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SendVC+APIService.swift"; sourceTree = "<group>"; };
 		E866FA67278C236800D8272E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		E866FA6A278CFFAD00D8272E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E866FA6D278D1C1500D8272E /* SendVC+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SendVC+TextView.swift"; sourceTree = "<group>"; };
+		E866FA6F278D1C7000D8272E /* SendVC+keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SendVC+keyboard.swift"; sourceTree = "<group>"; };
+		E866FA72278D1D0300D8272E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E866FA75278D3D0800D8272E /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		E8CF181A278C0EB70021D008 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		E8CF181B278C0EB70021D008 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		E8CF181C278C0EB70021D008 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
@@ -35,7 +57,7 @@
 		E8CFF028278BF27D0012D520 /* Babyhoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babyhoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CFF02B278BF27D0012D520 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8CFF02D278BF27D0012D520 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E8CFF02F278BF27D0012D520 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E8CFF02F278BF27D0012D520 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		E8CFF032278BF27D0012D520 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8CFF034278BF27E0012D520 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8CFF037278BF27E0012D520 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,19 +69,82 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532D8BA806B0D26443C56802 /* Pods_Babyhoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C35C22531493BB21289FCBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E58F1FEDD631351BEC03DEFD /* Pods_Babyhoney.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD3A9849B86DD24258F3FA67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A1E10A1C156B0900708DE10 /* Pods-Babyhoney.debug.xcconfig */,
+				24F827F248C91EDE6B84F2DE /* Pods-Babyhoney.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E84084B3278D440D00D8BD1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E84084B4278D448000D8BD1B /* Story.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E84084B6278D456800D8BD1B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E84084B7278D457800D8BD1B /* APIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		E866FA69278C2D9600D8272E /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				E866FA74278D3CEE00D8272E /* CustomCell */,
 				E8CFF031278BF27D0012D520 /* Main.storyboard */,
 				E8CFF036278BF27E0012D520 /* LaunchScreen.storyboard */,
 			);
 			path = VIew;
+			sourceTree = "<group>";
+		};
+		E866FA6C278D1C0100D8272E /* SendVC */ = {
+			isa = PBXGroup;
+			children = (
+				E8CFF02F278BF27D0012D520 /* SendViewController.swift */,
+				E866FA6D278D1C1500D8272E /* SendVC+TextView.swift */,
+				E866FA6F278D1C7000D8272E /* SendVC+keyboard.swift */,
+				E84084B9278D4C6800D8BD1B /* SendVC+APIService.swift */,
+			);
+			path = SendVC;
+			sourceTree = "<group>";
+		};
+		E866FA71278D1CE500D8272E /* ListVC */ = {
+			isa = PBXGroup;
+			children = (
+				E866FA72278D1D0300D8272E /* ListViewController.swift */,
+				E84084B1278D43CC00D8BD1B /* ListVC+TableView.swift */,
+			);
+			path = ListVC;
+			sourceTree = "<group>";
+		};
+		E866FA74278D3CEE00D8272E /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				E866FA75278D3D0800D8272E /* ListCell.swift */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		E8CF1819278C0E0E0021D008 /* Font */ = {
@@ -89,6 +174,8 @@
 			children = (
 				E8CFF02A278BF27D0012D520 /* Babyhoney */,
 				E8CFF029278BF27D0012D520 /* Products */,
+				AD3A9849B86DD24258F3FA67 /* Pods */,
+				3C35C22531493BB21289FCBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +190,8 @@
 		E8CFF02A278BF27D0012D520 /* Babyhoney */ = {
 			isa = PBXGroup;
 			children = (
+				E84084B6278D456800D8BD1B /* Service */,
+				E84084B3278D440D00D8BD1B /* Model */,
 				E866FA69278C2D9600D8272E /* VIew */,
 				E8CF1826278C13550021D008 /* Util */,
 				E8CF1819278C0E0E0021D008 /* Font */,
@@ -126,7 +215,9 @@
 		E8CFF040278BF7880012D520 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E8CFF02F278BF27D0012D520 /* ViewController.swift */,
+				E866FA71278D1CE500D8272E /* ListVC */,
+				E866FA6C278D1C0100D8272E /* SendVC */,
+				E866FA6A278CFFAD00D8272E /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,9 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8CFF03C278BF27E0012D520 /* Build configuration list for PBXNativeTarget "Babyhoney" */;
 			buildPhases = (
+				B1655860947AC23E5A756F06 /* [CP] Check Pods Manifest.lock */,
 				E8CFF024278BF27D0012D520 /* Sources */,
 				E8CFF025278BF27D0012D520 /* Frameworks */,
 				E8CFF026278BF27D0012D520 /* Resources */,
+				A0DC4DFF22A2D5B6192C04DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,16 +296,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A0DC4DFF22A2D5B6192C04DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Babyhoney/Pods-Babyhoney-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Babyhoney/Pods-Babyhoney-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Babyhoney/Pods-Babyhoney-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1655860947AC23E5A756F06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Babyhoney-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E8CFF024278BF27D0012D520 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E866FA6B278CFFAD00D8272E /* ViewController.swift in Sources */,
+				E84084BA278D4C6800D8BD1B /* SendVC+APIService.swift in Sources */,
+				E866FA6E278D1C1500D8272E /* SendVC+TextView.swift in Sources */,
+				E84084B2278D43CC00D8BD1B /* ListVC+TableView.swift in Sources */,
 				E866FA68278C236800D8272E /* Gradient.swift in Sources */,
-				E8CFF030278BF27D0012D520 /* ViewController.swift in Sources */,
+				E866FA76278D3D0800D8272E /* ListCell.swift in Sources */,
+				E8CFF030278BF27D0012D520 /* SendViewController.swift in Sources */,
 				E8CFF02C278BF27D0012D520 /* AppDelegate.swift in Sources */,
+				E866FA73278D1D0300D8272E /* ListViewController.swift in Sources */,
 				E8CFF02E278BF27D0012D520 /* SceneDelegate.swift in Sources */,
+				E84084B8278D457800D8BD1B /* APIService.swift in Sources */,
 				E8CF1828278C13750021D008 /* LetterSpacing.swift in Sources */,
+				E866FA70278D1C7000D8272E /* SendVC+keyboard.swift in Sources */,
+				E84084B5278D448000D8BD1B /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +500,7 @@
 		};
 		E8CFF03D278BF27E0012D520 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A1E10A1C156B0900708DE10 /* Pods-Babyhoney.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -384,6 +529,7 @@
 		};
 		E8CFF03E278BF27E0012D520 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24F827F248C91EDE6B84F2DE /* Pods-Babyhoney.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

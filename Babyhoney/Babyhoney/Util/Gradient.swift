@@ -19,7 +19,12 @@ extension UIButton {
         gradient.frame = bounds
         gradient.cornerRadius = self.frame.height / 2
         
-        layer.insertSublayer(gradient, at: 0)
+        layer.addSublayer(gradient)
+        
+    }
+    
+    func deleteGradient() {
+        layer.sublayers?.removeAll()
     }
     
 }
