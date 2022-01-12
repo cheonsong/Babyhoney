@@ -21,6 +21,8 @@ class SendViewController: UIViewController {
     let url = "http://babyhoney.kr/api/story"
     // parameters
     var parameters: [String: Any]?
+    // ApiManager
+    var apiManager: StoryApiService?
     
     // MARK: - IBOutlet
     // 사연보내기
@@ -47,14 +49,8 @@ class SendViewController: UIViewController {
     }
     
     @IBAction func sendStory(_ sender: UIButton) {
-        parameters = ["send_mem_gender": "F",
-                      "send_mem_no": 4521,
-                      "send_chat_name": "천송",
-                      "send_mem_photo": "",
-                      "story_conts": textView.text!,
-                      "bj_id": "cheonsong"]
-        
-        requestApi(url: url, method: HTTPMethod.post, parameters: parameters, completion: nil)
+        // API매니저를 통해 비제이에게 사연 전송
+        apiManager?.postStoryToBJ(self.textView.text, completion: nil)
         
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -65,6 +61,8 @@ class SendViewController: UIViewController {
         
         self.textView.delegate = self
         
+        // API매니저 초기화
+        apiManager = StoryApiManager(service: APIServiceProvider())
         // Letter Spacing 설정
         setLetterSpacing()
         
@@ -99,7 +97,7 @@ class SendViewController: UIViewController {
     
     // 사연의 길이를 출력해주는 함수
     func updateRemainCountLabel(count: Int) {
-        remainCountLabel.text = "\(count)/300"
+        remainCountLabel.text = "\((count)/300)"
     }
     
 }

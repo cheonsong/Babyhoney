@@ -12,7 +12,7 @@ import SwiftyJSON
 class ListViewController: UIViewController {
     
     // MARK: - Property
-    //    var apiManager: ApiManager?
+    var apiManager: StoryApiService?
     var list = [Story]()
     var url = "http://babyhoney.kr/api/story/page/1?bj_id=cheonsong"
     
@@ -33,8 +33,9 @@ class ListViewController: UIViewController {
             // 선택된 위치를 통해 몇번째 셀인지 유추
             let point = sender.convert(CGPoint.zero, to: self.tableView)
             guard let indexPath = self.tableView.indexPathForRow(at: point) else { return }
-            let story = self.list[indexPath.row]
+            
             // TODO: - API 요청해서 삭제하기 추가
+            // let story = self.list[indexPath.row]
             // 해당 셀을 리스트, 테이블뷰에서 삭제
             self.list.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -55,54 +56,25 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.apiManager = ApiManager(service: APIServiceProvider())
+        self.apiManager = StoryApiManager(service: APIServiceProvider())
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableView.automaticDimension
         
         self.middleView.isHidden = true
         // TODO: - APIManager 리팩토링
-        //        apiManager?.getStoryList { data in
-        //            data.forEach{ [weak self] story in
-        //                self?.list.append(story)
-        //            }
-        //            self.tableView?.reloadData()
-        //        }
         
-        AF.request(URLRequest(url: URL(string: url)!)).responseJSON { (response) in
-            switch response.result {
-            case .success(let res):
-                let json = JSON(res)
-                
-                print(json["list"])
-                json["list"].forEach {
-                    let story = Story()
-                    story.story = $0.1["story_conts"].stringValue
-                    story.gender = $0.1["send_mem_gender"].stringValue
-                    story.nickName = $0.1["send_chat_name"].stringValue
-                    story.photo = $0.1["send_mem_photo"].stringValue
-                    story.bjId = $0.1["bj_id"].stringValue
-                    story.time = $0.1["ins_date"].stringValue
-                    story.regNo = $0.1["reg_no"].stringValue
-                    
-                    print(story.story!)
-                    
-                    self.list.append(story)
-                }
-                self.tableView.reloadData()
-                
-                if self.list.isEmpty {
-                    self.middleView.isHidden = false
-                }
-                
-            case .failure(let err):
-                print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
+        apiManager?.getStoryList { data in
+            data.forEach{ [weak self] story in
+                self?.list.append(story)
             }
+            self.tableView?.reloadData()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        topView.layer.addBorder([.bottom], color: UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1), width: 1)
+        topView.layer.addBorder([.bottom], color: UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1), width: 1)
     }
 }
 

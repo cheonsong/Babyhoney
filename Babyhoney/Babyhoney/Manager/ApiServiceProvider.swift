@@ -7,28 +7,21 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class APIServiceProvider: ApiService {
     
-    func requestApi(url: String, method: HTTPMethod, parameters: [String : Any]?, completion: ((Any?) -> Void)?) {
+    func requestApi(url: String, method: HTTPMethod, parameters: [String : Any]?, completion: ((_ response: Any?) ->Void)?) {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = method.rawValue
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: [])
-        } catch {
-            print("🚫 http Body Error")
+        if (method == .post) {
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: [])
+            } catch {
+                print("🚫 http Body Error")
+            }
         }
-        
-        AF.request(request).responseJSON(completionHandler: completion!)
-        
-//        AF.request(request).responseString { (response) in
-//            switch response.result {
-//            case .success:
-//                print("\(method.rawValue) 성공")
-//
-//            case .failure(let err):
-//                print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
-//            }
-//        }
+            AF.request(request).responseJSON(completionHandler: completion!)
+            
+        }
     }
-}
