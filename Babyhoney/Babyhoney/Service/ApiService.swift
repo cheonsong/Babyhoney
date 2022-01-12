@@ -16,3 +16,7 @@ protocol ApiService {
         completion: ((_ response: Any?) ->Void)?
     )
 }
+
+protocol StoryApiService {
+    func getStoryList(completion: (([Story]) ->Void)?)
+}

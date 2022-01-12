@@ -21,5 +21,7 @@ class Story {
     var story: String?
     // 입력 시간
     var time: String?
+    // 등록번호
+    var regNo: String?
     
 }

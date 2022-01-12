@@ -48,8 +48,8 @@ class SendViewController: UIViewController {
     
     @IBAction func sendStory(_ sender: UIButton) {
         parameters = ["send_mem_gender": "F",
-                      "send_mem_no": 4420,
-                      "send_chat_name": "천송님",
+                      "send_mem_no": 4521,
+                      "send_chat_name": "천송",
                       "send_mem_photo": "",
                       "story_conts": textView.text!,
                       "bj_id": "cheonsong"]

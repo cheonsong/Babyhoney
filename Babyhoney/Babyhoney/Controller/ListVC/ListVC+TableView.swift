@@ -28,14 +28,31 @@ extension ListViewController: UITableViewDataSource {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
         
+        // 프로필 사진은 값이 없을경우 디폴트
         if(story.photo! != "") {
-            let data = try? Data(contentsOf: URL(string: story.photo! ?? "")!)
+            let data = try? Data(contentsOf: URL(string: story.photo!)!)
             cell.userImage.image = UIImage(data: data!)
         }
-        
         cell.nickname?.text = story.nickName!
         cell.sexImage?.image = story.gender! == "M" ? UIImage(named: "badge_sex_m.png") : UIImage(named: "badge_sex_fm.png")
         cell.storyView?.text = story.story!
+        
+        // 현재 시간과 사연이 입력된 시간을 비교
+        let tis = compareDate(prevTime: story.time!)
+        
+        if (tis >= 60*60*24) {
+            // 하루이상
+            cell.time?.text = "오래전"
+        } else if (tis > 60*60) {
+            // 1~23시간
+            cell.time?.text = "\(tis/3600)시간 전"
+        } else if (tis > 60) {
+            // 1~59분
+            cell.time?.text = "\(tis/60)분 전"
+        } else {
+            // 1~59초
+            cell.time?.text = "\(tis)초 전"
+        }
         
         return cell
     }

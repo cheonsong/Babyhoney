@@ -28,7 +28,6 @@ extension SendViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        // 공백 개행을 카운트하는 경우
         guard let str = textView.text else { return true }
         let newLength = str.count + text.count - range.length
         
