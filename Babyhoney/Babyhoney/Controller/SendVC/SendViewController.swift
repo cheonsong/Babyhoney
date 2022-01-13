@@ -97,7 +97,7 @@ class SendViewController: UIViewController {
     
     // 사연의 길이를 출력해주는 함수
     func updateRemainCountLabel(count: Int) {
-        remainCountLabel.text = "\((count)/300)"
+        remainCountLabel.text = "(\(count)/\(300))"
     }
     
 }

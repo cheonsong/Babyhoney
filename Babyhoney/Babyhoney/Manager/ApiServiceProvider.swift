@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class APIServiceProvider: ApiService {
     
+    // Alamofire을 사용한 Api 요청
     func requestApi(url: String, method: HTTPMethod, parameters: [String : Any]?, completion: ((_ response: Any?) ->Void)?) {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = method.rawValue

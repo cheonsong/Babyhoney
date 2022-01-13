@@ -10,7 +10,7 @@ import Alamofire
 
 protocol StoryApiService {
     // 사연 리스트 GET
-    func getStoryList(completion: (([Story]) ->Void)?)
+    func getStoryList(_ page: Int, completion: ((Int, Int, [Story]) ->Void)?)
     
     // 사연 보내기 POST
     func postStoryToBJ(_ story: String, completion: (() ->Void)?)

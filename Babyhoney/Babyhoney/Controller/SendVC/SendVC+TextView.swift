@@ -12,6 +12,9 @@ import UIKit
 extension SendViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         // 편집이 시작되면 플레이스홀더를 지우고 텍스트컬러를 수정함
+        // 텍스트뷰에서는 플레이스홀더가 존재하지 않음 그렇기에 임의로 텍스트를 넣어서 플레이스홀더 처럼 보이게 해야함
+        // 그런데 사용자가 이 플레이스홀더를 모르고 몇자 지웠다고해서 사연을 입력한 것이 아니기때문에
+        // 그런 상황을 방지하기 위해 입력된 사연과 플레이스홀더를 비교함
         if placeholder.contains(textView.text) {
             self.textView.text = ""
             self.textView.textColor = UIColor(red: 17/255, green: 17/255, blue: 17/255, alpha: 1)
@@ -20,6 +23,7 @@ extension SendViewController: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        // 편집이 끝났는데 공백이라면 플레이스홀더 출력
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = placeholder
             textView.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
@@ -40,6 +44,7 @@ extension SendViewController: UITextViewDelegate {
             
             return false
         }
+        
         
         updateRemainCountLabel(count: newLength)
         

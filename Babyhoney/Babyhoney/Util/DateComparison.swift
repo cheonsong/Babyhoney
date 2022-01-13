@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Post된 시간과 현재 시간을 비교하는 함수
+
 func compareDate(prevTime time: String) -> Int {
     
     let formatter = DateFormatter()

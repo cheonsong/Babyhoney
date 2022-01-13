@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// 그라데이션 버튼 만들기
+
 extension UIButton {
     
     func setGradient(color1:UIColor,color2:UIColor){
@@ -21,10 +23,6 @@ extension UIButton {
         
         layer.addSublayer(gradient)
         
-    }
-    
-    func deleteGradient() {
-        layer.sublayers?.removeAll()
     }
     
 }

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// 자간 간격 조절 함수
+
 extension UILabel {
     func kern(spacing: Double) {
         let attrString = NSMutableAttributedString(string: self.text!)

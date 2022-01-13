@@ -16,6 +16,7 @@ class StoryApiManager: StoryApiService {
         self.apiServiceProvider = service
     }
     
+    // 비제이에게 사연 보내기
     func postStoryToBJ(_ story: String ,completion: (() -> Void)?) {
         
         let parameters: [String: Any]? = [ "send_mem_gender": "F",
@@ -41,18 +42,30 @@ class StoryApiManager: StoryApiService {
         })
     }
     
-    func getStoryList(completion: (([Story]) -> Void)?) {
+    // 사연 리스트 불러오기
+    func getStoryList(_ page: Int, completion: ((Int, Int ,[Story]) -> Void)?) {
         
-        self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/story/page/1?bj_id=cheonsong", method: .get, parameters: nil, completion: { data in
+        
+        self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/story/page/\(page)?bj_id=cheonsong", method: .get, parameters: nil, completion: { data in
             
             // data는 Any 타입이므로 이를 사용하기 위해 다운캐스팅 진행
             let response = data as? DataResponse<Any, AFError>
             var storyList = [Story]()
+            var nextPage = page
+            var lastPage = 0
             
             switch (response?.result) {
             case .success(let res):
+                print(res)
+                
                 // 데이터 파싱
                 let json = JSON(res)
+                
+                // 페이징을 위한 현재페이지 저장
+                nextPage = json["current_page"].intValue + 1
+                // 페이징을 위한 전체 페이지수 저장
+                lastPage = json["total_page"].intValue
+                
                 json["list"].forEach {
                     let story = Story()
                     story.story = $0.1["story_conts"].stringValue
@@ -72,7 +85,7 @@ class StoryApiManager: StoryApiService {
             default:
                 print("default")
             }
-            completion?(storyList)
+            completion?(nextPage, lastPage, storyList)
         })
     }
     
