@@ -16,6 +16,7 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var time: UILabel!           // 포스트된 시간
     @IBOutlet weak var optionButton: UIButton!  // 더보기버튼
     @IBOutlet weak var storyView: UILabel!      // 사연창
+    @IBOutlet weak var storyRootView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

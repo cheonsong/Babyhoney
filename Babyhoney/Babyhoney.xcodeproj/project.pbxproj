@@ -24,6 +24,7 @@
 		E866FA76278D3D0800D8272E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866FA75278D3D0800D8272E /* CustomCell.swift */; };
 		E88D5823278F9D84003A4910 /* ListView+Pagenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D5822278F9D84003A4910 /* ListView+Pagenation.swift */; };
 		E88D5827278FBF20003A4910 /* AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D5826278FBF20003A4910 /* AddBorder.swift */; };
+		E88D582B278FD9D4003A4910 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D582A278FD9D4003A4910 /* ColorManager.swift */; };
 		E8CF1820278C0EB80021D008 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8CF181A278C0EB70021D008 /* NotoSansKR-Bold.otf */; };
 		E8CF1821278C0EB80021D008 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8CF181B278C0EB70021D008 /* NotoSansKR-Regular.otf */; };
 		E8CF1822278C0EB80021D008 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8CF181C278C0EB70021D008 /* NotoSansKR-Thin.otf */; };
@@ -59,6 +60,7 @@
 		E866FA75278D3D0800D8272E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		E88D5822278F9D84003A4910 /* ListView+Pagenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+Pagenation.swift"; sourceTree = "<group>"; };
 		E88D5826278FBF20003A4910 /* AddBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBorder.swift; sourceTree = "<group>"; };
+		E88D582A278FD9D4003A4910 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		E8CF181A278C0EB70021D008 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		E8CF181B278C0EB70021D008 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		E8CF181C278C0EB70021D008 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
@@ -170,6 +172,23 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		E88D5828278FD9B9003A4910 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E88D5829278FD9CA003A4910 /* Color */,
+				E8CF1819278C0E0E0021D008 /* Font */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E88D5829278FD9CA003A4910 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				E88D582A278FD9D4003A4910 /* ColorManager.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
 		E8CF1819278C0E0E0021D008 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,12 +234,12 @@
 		E8CFF02A278BF27D0012D520 /* Babyhoney */ = {
 			isa = PBXGroup;
 			children = (
+				E88D5828278FD9B9003A4910 /* Resource */,
 				E84084BF278E5DA700D8BD1B /* Manager */,
 				E84084B6278D456800D8BD1B /* Service */,
 				E84084B3278D440D00D8BD1B /* Model */,
 				E866FA69278C2D9600D8272E /* VIew */,
 				E8CF1826278C13550021D008 /* Util */,
-				E8CF1819278C0E0E0021D008 /* Font */,
 				E8CFF040278BF7880012D520 /* Controller */,
 				E8CFF03F278BF7720012D520 /* AppDelegate */,
 				E8CFF034278BF27E0012D520 /* Assets.xcassets */,
@@ -371,6 +390,7 @@
 			files = (
 				E84084C1278E5DB100D8BD1B /* StoryApiManager.swift in Sources */,
 				E88D5827278FBF20003A4910 /* AddBorder.swift in Sources */,
+				E88D582B278FD9D4003A4910 /* ColorManager.swift in Sources */,
 				E866FA6B278CFFAD00D8272E /* ViewController.swift in Sources */,
 				E866FA6E278D1C1500D8272E /* SendVC+TextView.swift in Sources */,
 				E84084B2278D43CC00D8BD1B /* ListVC+TableView.swift in Sources */,

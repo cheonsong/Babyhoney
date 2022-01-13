@@ -46,6 +46,8 @@ extension ListViewController: UITableViewDataSource {
             }
             cell.nickname?.text = story.nickName!
             cell.sexImage?.image = story.gender! == "M" ? UIImage(named: "badge_sex_m.png") : UIImage(named: "badge_sex_fm.png")
+            cell.storyView?.backgroundColor = story.gender! == "M" ? colorManager.color238 : colorManager.fmColor
+            cell.storyRootView?.backgroundColor = story.gender! == "M" ? colorManager.color238 : colorManager.fmColor
             cell.storyView?.text = story.story!
             
             // 현재 시간과 사연이 입력된 시간을 비교

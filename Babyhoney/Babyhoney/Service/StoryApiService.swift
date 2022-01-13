@@ -13,5 +13,8 @@ protocol StoryApiService {
     func getStoryList(_ page: Int, completion: ((Int, Int, [Story]) ->Void)?)
     
     // 사연 보내기 POST
-    func postStoryToBJ(_ story: String, completion: (() ->Void)?)
+    func postStoryToBJ(_ story: String, completion: (() -> Void)?)
+    
+    // 사연 삭제 DELETE
+//    func deleteStory(_ regNo: String, _ bjId: String, completion: (() -> Void)?)
 }

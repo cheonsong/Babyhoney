@@ -25,16 +25,20 @@ extension ListViewController : UIScrollViewDelegate {
                 beginPaging()
             }
         }
+        
     }
     
     func beginPaging() {
         
+        // 페이징중이라는 것을 알려줌
         isPaging = true
         
+        // 스피너가 있는 섹션을 리로드
         DispatchQueue.main.async {
             self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
         
+        // 그 후에 페이징 시작
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.paging()
         }

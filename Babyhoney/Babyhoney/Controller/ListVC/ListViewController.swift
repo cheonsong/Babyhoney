@@ -18,11 +18,14 @@ class ListViewController: UIViewController {
     var lastPage: Int = 0               // (페이징)총 사연 수를 저장할 변수
     var isPaging = false                // 페이징 중을 알려주는 변수
     var hasNextPage = false             // 다음 페이지가 남아있는지 알려주는 변수
+    let colorManager = CustomColor()
+    var backgroundView: UIView?
     
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topView: UIView!         // 최상단 제목 및 설명 뷰
     @IBOutlet weak var middleView: UIView!      // 사연이 없을경우 출력할 뷰
+    @IBOutlet weak var stackView: UIStackView!
     
     // MARK: - IBAction
     @IBAction func tapListDownButton(_ sender: Any) {
@@ -37,11 +40,12 @@ class ListViewController: UIViewController {
             guard let indexPath = self.tableView.indexPathForRow(at: point) else { return }
             
             // TODO: - API 요청해서 삭제하기 추가
-            // let story = self.list[indexPath.row]
             // 해당 셀을 리스트, 테이블뷰에서 삭제
             // 선택된 셀을 테이블 뷰, 리스트에서 삭제
             self.list.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            //self.apiManager?.deleteStory(story.regNo!, story.bjId!, completion: nil)
             
             // 리스트가 비었다면 등록된 사연이 없습니다. 출력
             if (self.list.isEmpty) {
@@ -64,6 +68,11 @@ class ListViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.backgroundColor = .white
+        
+        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.stackView.frame.size.height))
+        backgroundView?.backgroundColor = .black
+        self.view.insertSubview(backgroundView!, at: 0)
         
         // 다음페이지, 총 페이지, 사연리스트를 받아옴
         apiManager?.getStoryList(page) {nextPage, lastPage, data in
@@ -83,10 +92,14 @@ class ListViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // 테이블뷰와 최상단뷰를 구분하기위해 최상단뷰의 아래쪽에 색을 추가함
-        topView.layer.addBorder([.bottom], color: UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1), width: 1)
+        topView.layer.addBorder([.bottom], color: colorManager.color238, width: 1)
         
         // 페이징
         paging()
+    }
+    
+    deinit {
+        print("ListVC deinit")
     }
     
     // MARK: - Function
@@ -114,6 +127,7 @@ class ListViewController: UIViewController {
             // list가 비어있어도 이미 남아있는 사연들을 불러온 후 list가 업데이트 되지 않은 경우이기 때문에
             // list는 다시 추가될것임 이기에 당장 리스트가 비어있다고 해서 출력할 사연이 없는것이 아님
             // 하지만 지금 시점에서는 list는 비어있고 등록된 사연이 없다는 뷰가 출력되기 때문에 해당뷰를 숨겨줌
+            // 이 시점에서 뷰를 숨기지 않으면 테이블뷰가 리로드 돼도 사연이 없다고 출력됨
             if (self.list.isEmpty) {
                 self.middleView.isHidden = true
             }
@@ -123,7 +137,7 @@ class ListViewController: UIViewController {
             
             // 사연이 남아있는지 아닌지 계산 후 저장
             self.hasNextPage = self.lastPage == ((self.page-2) * 5 + (self.lastPage % 5)) ? false : true
-            // 페이징이 끝났으므로 페이징 중 변수 false
+            // 페이징이 끝났으므로 페이징중 변수 false
             self.isPaging = false
             // list에 추가한 데이터를 테이블뷰에 출력
             self.tableView.reloadData()

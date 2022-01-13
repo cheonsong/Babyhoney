@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 // TODO: - APIManager
 class StoryApiManager: StoryApiService {
+    
     var apiServiceProvider: ApiService?
     
     init(service: ApiService) {
@@ -19,7 +20,7 @@ class StoryApiManager: StoryApiService {
     // 비제이에게 사연 보내기
     func postStoryToBJ(_ story: String ,completion: (() -> Void)?) {
         
-        let parameters: [String: Any]? = [ "send_mem_gender": "F",
+        let parameters: [String: Any]? = [ "send_mem_gender": "M",
                                            "send_mem_no": 4521,
                                            "send_chat_name": "천송",
                                            "send_mem_photo": "",
@@ -52,7 +53,7 @@ class StoryApiManager: StoryApiService {
             let response = data as? DataResponse<Any, AFError>
             var storyList = [Story]()
             var nextPage = page
-            var lastPage = 0
+            var totalPage = 0
             
             switch (response?.result) {
             case .success(let res):
@@ -64,7 +65,7 @@ class StoryApiManager: StoryApiService {
                 // 페이징을 위한 현재페이지 저장
                 nextPage = json["current_page"].intValue + 1
                 // 페이징을 위한 전체 페이지수 저장
-                lastPage = json["total_page"].intValue
+                totalPage = json["total_page"].intValue
                 
                 json["list"].forEach {
                     let story = Story()
@@ -85,8 +86,31 @@ class StoryApiManager: StoryApiService {
             default:
                 print("default")
             }
-            completion?(nextPage, lastPage, storyList)
+            completion?(nextPage, totalPage, storyList)
         })
     }
+    
+//    func deleteStory(_ regNo: String, _ bjId: String, completion: (() -> Void)?) {
+//
+//        let param = [
+//            "reg_no": regNo,
+//            "bj_id": bjId
+//        ]
+//
+//        self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/story", method: .delete, parameters: param, completion: { data in
+//
+//            let response = data as? DataResponse<Any, AFError>
+//
+//            switch(response?.result) {
+//            case .success(let res):
+//                print("사연 삭제 성공")
+//                print(res)
+//            case .failure(let err):
+//                print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
+//            default:
+//                print("default")
+//            }
+//        })
+//    }
     
 }

@@ -11,39 +11,30 @@ import Alamofire
 class SendViewController: UIViewController {
     
     // MARK: - Property
-    // 키보드 높이를 저장할 변수
-    var keyHeight: CGFloat?
-    // 슈퍼뷰의 최초 높이를 저장할 변수
-    var viewSize: CGFloat?
-    // 사연입력창 placeholder
-    let placeholder = "10자 이상 300자 이내로 작성해주세요. "
-    // api를 보낼 url
-    let url = "http://babyhoney.kr/api/story"
-    // parameters
-    var parameters: [String: Any]?
-    // ApiManager
-    var apiManager: StoryApiService?
+    
+    var keyHeight: CGFloat?     // 키보드 높이를 저장할 변수
+    let placeholder = "10자 이상 300자 이내로 작성해주세요. "    // 사연입력창 placeholder
+    var apiManager: StoryApiService?    // ApiManager
+    let colorManager = CustomColor()    // ColorManger
+    var editFlag: Bool = false     // 사연이 입력중인지 아닌지를 판단하는 플래그 (빈공간 터치시 키보드, 화면을 제어하기 위한 변수)
+    var backgroundView: UIView?
     
     // MARK: - IBOutlet
-    // 사연보내기
-    @IBOutlet weak var titleLabel: UILabel!
-    // (0/300)
-    @IBOutlet weak var remainCountLabel: UILabel!
-    // 듣고싶은 신청곡, 전하고싶은~~
-    @IBOutlet weak var messageLabel: UILabel!
-    // 보내기 버튼
-    @IBOutlet weak var sendButton: UIButton!
-    // 사연 입력창 상위 뷰
-    @IBOutlet weak var textRootView: UIView!
-    // 사연 입력창
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var remainCountLabel: UILabel!   // (0/300)
+    @IBOutlet weak var sendButton: UIButton!        // 보내기 버튼
+    @IBOutlet weak var textRootView: UIView!        // 사연 입력창 상위 뷰
+    @IBOutlet weak var textView: UITextView!        // 사연 입력창
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!    // 키보드가 올라왔을 때 화면을 조정하기 위한 레이아웃
+    @IBOutlet weak var storySendView: UIView!
     
     // MARK: - IBAction
     // 사연 입력창 내리기 버튼
     @IBAction func downTextView(_ sender: UIButton) {
-        if(self.view.frame.size.height == viewSize!) {
+        // 텍스트뷰를 편집중이지 않은경우 이전 화면으로
+        if(!editFlag) {
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         } else {
+            // 텍스트뷰 편집 시 편집 종료, 키보드 내림
             self.view.endEditing(true)
         }
     }
@@ -63,41 +54,42 @@ class SendViewController: UIViewController {
         
         // API매니저 초기화
         apiManager = StoryApiManager(service: APIServiceProvider())
-        // Letter Spacing 설정
-        setLetterSpacing()
         
         // CornerRadius 설정
         self.textRootView.layer.cornerRadius = 5
         self.sendButton.layer.cornerRadius = self.sendButton.frame.height / 2
         
-        // 키보드가 올라왔을 떄를 대비하여 최초의 뷰높이 저장
-        viewSize = self.view.frame.size.height
-        
-        self.sendButton.setGradient(color1: UIColor(red: 133/255, green: 129/255, blue: 255/255, alpha: 1), color2: UIColor(red: 152/255, green: 107/255, blue: 255/255, alpha: 1))
+        self.sendButton.setGradient(color1: colorManager.gradientStartColor, color2: colorManager.gradientFinishColor)
         self.sendButton.layer.sublayers?.first?.isHidden = true
+        
+        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.storySendView.frame.size.height))
+        backgroundView?.backgroundColor = .black
+        self.view.insertSubview(backgroundView!, at: 0)
         
         //키보드 알림 등록
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide(_:)),
+                                               selector: #selector(adjustInputView),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(_:)),
+                                               selector: #selector(adjustInputView),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
+        
+    }
+    
+    deinit {
+        print("SendVC deinit")
     }
     
     // MARK: - Function
-    // 자간 간격 정리 함수
-    func setLetterSpacing() {
-        titleLabel.kern(spacing: -0.9)
-        remainCountLabel.kern(spacing: -0.65)
-        messageLabel.kern(spacing: -0.65)
-    }
-    
     // 사연의 길이를 출력해주는 함수
     func updateRemainCountLabel(count: Int) {
         remainCountLabel.text = "(\(count)/\(300))"
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
     }
     
 }
