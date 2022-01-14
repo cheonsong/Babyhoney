@@ -24,8 +24,11 @@ extension SendViewController {
             // 키보드가 내려가면 제약조건을 0으로 걸어줌
             bottomConstraint.constant = 0
             editFlag = false
+            if (self.textView.text == "") {
+                self.textView.text = self.placeholder
+                self.textView.textColor = colorManager.color102
+            }
         }
-        print("\(keyboardFrame.height)")
     }
     
     

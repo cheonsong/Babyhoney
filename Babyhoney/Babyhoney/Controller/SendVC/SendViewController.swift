@@ -41,7 +41,7 @@ class SendViewController: UIViewController {
     
     @IBAction func sendStory(_ sender: UIButton) {
         // API매니저를 통해 비제이에게 사연 전송
-        apiManager?.postStoryToBJ(self.textView.text, completion: nil)
+        apiManager?.postStoryToBJ(self.textView.text.trimmingCharacters(in: .whitespaces), completion: nil)
         
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -86,10 +86,6 @@ class SendViewController: UIViewController {
     // 사연의 길이를 출력해주는 함수
     func updateRemainCountLabel(count: Int) {
         remainCountLabel.text = "(\(count)/\(300))"
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
     }
     
 }

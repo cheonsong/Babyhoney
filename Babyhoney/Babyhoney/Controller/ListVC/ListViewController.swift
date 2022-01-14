@@ -122,7 +122,7 @@ class ListViewController: UIViewController {
         }
         
         // 사연리스트를 불러온 후 실행
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
             // list가 비어있어도 이미 남아있는 사연들을 불러온 후 list가 업데이트 되지 않은 경우이기 때문에
             // list는 다시 추가될것임 이기에 당장 리스트가 비어있다고 해서 출력할 사연이 없는것이 아님
@@ -136,7 +136,7 @@ class ListViewController: UIViewController {
             self.list.append(contentsOf: datas)
             
             // 사연이 남아있는지 아닌지 계산 후 저장
-            self.hasNextPage = self.lastPage == ((self.page-2) * 5 + (self.lastPage % 5)) ? false : true
+            self.hasNextPage = self.lastPage == ((self.page - 2) * 5 + (self.lastPage % 5)) ? false : true
             // 페이징이 끝났으므로 페이징중 변수 false
             self.isPaging = false
             // list에 추가한 데이터를 테이블뷰에 출력

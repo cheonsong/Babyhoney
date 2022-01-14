@@ -49,11 +49,11 @@ extension SendViewController: UITextViewDelegate {
         
         updateRemainCountLabel(count: newLength)
         
-        if newLength == 0 {
-            textView.text = placeholder
-            textView.textColor = colorManager.color102
-            updateRemainCountLabel(count: 0)
-        }
+//        if newLength == 0 {
+//            textView.text = placeholder
+//            textView.textColor = colorManager.color102
+//            updateRemainCountLabel(count: 0)
+//        }
         
         // 사연이 입력되면 보내기 버튼이 활성화 됨 (10자 이상부터)
         if (newLength >= 10 && newLength < 300) {
@@ -61,6 +61,7 @@ extension SendViewController: UITextViewDelegate {
             if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 return true
             }
+            
             // 플레이스홀더가 입력돼 있으면 뷰 뷰는 활성화 되지 않음
             if !placeholder.contains(textView.text) {
                 self.sendButton.isEnabled = true
@@ -68,14 +69,16 @@ extension SendViewController: UITextViewDelegate {
             } else {
                 updateRemainCountLabel(count: 0)
             }
+            
         // 사연의 길이가 10보다 작으면 보내기 버튼 비활성화
         } else if newLength < 10 {
             self.sendButton.isEnabled = false
             self.sendButton.layer.sublayers?.first?.isHidden = true
+            updateRemainCountLabel(count: newLength)
         }
         
         // 사연의 길이가 300이 넘으면 더이상 입력되지 않음
-        return newLength < 300
+        return newLength < 301
     }
     
 }
