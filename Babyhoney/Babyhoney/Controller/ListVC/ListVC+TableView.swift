@@ -37,18 +37,18 @@ extension ListViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             let story = self.list[indexPath.row]
             
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as! StoryCell
             
             // 프로필 사진은 값이 없을경우 디폴트
-            if(story.photo! != "") {
-                let data = try? Data(contentsOf: URL(string: story.photo!)!)
-                cell.userImage.image = UIImage(data: data!)
-            }
-            cell.nickname?.text = story.nickName!
+//            if(story.photo! != "") {
+//                let data = try? Data(contentsOf: URL(string: story.photo!)!)
+//                //cell.userImage.image = UIImage(data: data!)
+//            }
+//            cell.nickname?.text = "aaa"
             cell.sexImage?.image = story.gender! == "M" ? UIImage(named: "badge_sex_m.png") : UIImage(named: "badge_sex_fm.png")
-            cell.storyView?.backgroundColor = story.gender! == "M" ? colorManager.color238 : colorManager.fmColor
+            cell.storyLabel?.backgroundColor = story.gender! == "M" ? colorManager.color238 : colorManager.fmColor
             cell.storyRootView?.backgroundColor = story.gender! == "M" ? colorManager.color238 : colorManager.fmColor
-            cell.storyView?.text = story.story!
+            cell.storyLabel?.text = story.story!
             
             // 현재 시간과 사연이 입력된 시간을 비교
             let tis = compareDate(prevTime: story.time!)

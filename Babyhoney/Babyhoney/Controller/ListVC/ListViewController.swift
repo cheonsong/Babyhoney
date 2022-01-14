@@ -32,35 +32,38 @@ class ListViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func tapMoreButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "정말 삭제하시겠습니까?", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
-            // 선택된 위치를 통해 몇번째 셀인지 유추
-            let point = sender.convert(CGPoint.zero, to: self.tableView)
-            guard let indexPath = self.tableView.indexPathForRow(at: point) else { return }
-            
-            // TODO: - API 요청해서 삭제하기 추가
-            // 해당 셀을 리스트, 테이블뷰에서 삭제
-            // 선택된 셀을 테이블 뷰, 리스트에서 삭제
-            self.list.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-            //self.apiManager?.deleteStory(story.regNo!, story.bjId!, completion: nil)
-            
-            // 리스트가 비었다면 등록된 사연이 없습니다. 출력
-            if (self.list.isEmpty) {
-                self.middleView.isHidden = false
-            }
-        }))
-        
-        alert.addAction(UIAlertAction(title: "아니오", style: .default, handler: nil))
-        
-        self.present(alert, animated: false)
-        
-    }
+//    @IBAction func tapMoreButton(_ sender: UIButton) {
+//        let alert = UIAlertController(title: "정말 삭제하시겠습니까?", message: nil, preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "예", style: .default, handler: {[weak self] _ in
+//            // 선택된 위치를 통해 몇번째 셀인지 유추
+//            let point = sender.convert(CGPoint.zero, to: self?.tableView)
+//            guard let indexPath = self?.tableView.indexPathForRow(at: point) else { return }
+//
+//            // TODO: - API 요청해서 삭제하기 추가
+//            // 해당 셀을 리스트, 테이블뷰에서 삭제
+//            // 선택된 셀을 테이블 뷰, 리스트에서 삭제
+//            self?.list.remove(at: indexPath.row)
+//            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+//
+//            //self.apiManager?.deleteStory(story.regNo!, story.bjId!, completion: nil)
+//
+//            // 리스트가 비었다면 등록된 사연이 없습니다. 출력
+//            if (self?.list.count == 0) {
+//                self?.middleView.isHidden = false
+//            }
+//        }))
+//
+//        alert.addAction(UIAlertAction(title: "아니오", style: .default, handler: nil))
+//
+//        self.present(alert, animated: false)
+//
+//    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
+        self.tableView.register(UINib(nibName: "StoryCell", bundle: nil), forCellReuseIdentifier: "StoryCell")
+        self.tableView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellReuseIdentifier: "LoadingCell")
+        
         super.viewDidLoad()
         
         self.apiManager = StoryApiManager(service: APIServiceProvider())
@@ -70,12 +73,14 @@ class ListViewController: UIViewController {
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.backgroundColor = .white
         
+        
+        
         backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.stackView.frame.size.height))
         backgroundView?.backgroundColor = .black
         self.view.insertSubview(backgroundView!, at: 0)
         
         // 다음페이지, 총 페이지, 사연리스트를 받아옴
-        apiManager?.getStoryList(page) {nextPage, lastPage, data in
+        apiManager?.getStoryList(page) { nextPage, lastPage, data in
             
             self.page = nextPage
             self.lastPage = lastPage
@@ -84,6 +89,7 @@ class ListViewController: UIViewController {
             data.forEach{ [weak self] story in
                 self?.list.append(story)
             }
+            
             self.tableView?.reloadData()
         }
     }
